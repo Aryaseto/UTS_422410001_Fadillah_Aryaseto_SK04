@@ -31,6 +31,7 @@ Repository: `UTS_422410001_Fadillah_Aryaseto_SK04`.
 - [Pengujian](#pengujian)
 - [Perintah berguna](#perintah-berguna)
 - [Pemecahan masalah](#pemecahan-masalah)
+- [Catatan desain](#catatan-desain)
 - [Catatan data](#catatan-data)
 
 ## Fitur
@@ -326,6 +327,18 @@ npm run docs:diagrams              # buat ulang PNG diagram
 - Perubahan tampilan tidak muncul: jalankan `php artisan view:clear` dan bangun ulang aset.
 - `mmdc` tidak ditemukan: gunakan `npx -y @mermaid-js/mermaid-cli` seperti pada bagian Diagram.
 - Diagram gagal karena Chromium: jalankan `npx playwright install chromium` lalu ulangi perintah `mmdc`.
+
+## Catatan desain
+
+Arah visual: ruang arsip analog, dengan dial ENERGY 2 / RHYTHM 2 / MOTION 1.
+
+- Palet paper, tan, sage, dan rust diambil dari kertas label, pita magnetik, dan sampul kaset. Rust menjadi satu aksen untuk peringatan dan tindakan penting.
+- Bitter dipakai untuk judul karena menyerupai huruf cetak pada label arsip. IBM Plex Sans menjaga keterbacaan isi, sedangkan IBM Plex Mono dipakai untuk kode, tanggal, dan label teknisi.
+- Border tebal dan hard shadow meniru tumpukan kartu katalog dan kotak kaset, sekaligus menandai elevasi tanpa efek glow.
+- Tekstur noise dan garis ledger halus memberi kesan kertas, bukan dekorasi generik.
+- Ikon Phosphor dipilih sesuai objek arsip: kaset, pita, kunci pas, corong, dan label.
+- Gerak dibatasi pada hover, transisi sidebar, dan dialog agar terasa seperti membuka kotak arsip, bukan animasi dekoratif.
+- Setiap angka di dashboard dihitung dari database. Data seeder bersifat fiktif dan dijelaskan pada bagian berikut.
 
 ## Catatan data
 
