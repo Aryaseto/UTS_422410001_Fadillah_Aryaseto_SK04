@@ -6,15 +6,15 @@ Studi kasus SK04, UTS mata kuliah Perancangan dan Pemrograman Web Lanjut.
 
 | Keterangan | Isi |
 |---|---|
-| Nama | `[Nama]` |
-| NIM | `[NIM]` |
-| Nama repository | `UTS_[NIM]_[Nama]_SK04` |
+| Nama | Fadillah Aryaseto |
+| NIM | 422410001 |
+| Nama repository | `UTS_422410001_Fadillah_Aryaseto_SK04` |
 | Studi kasus | SK04, Restorasi Pita Analog |
 | Framework | Laravel 12 |
 | Database | MySQL |
 | Tema | Retro analog, hangat, tekstur kertas label dan cangkang kaset |
 
-Ganti `[Nama]` dan `[NIM]` pada tabel di atas, lalu gunakan nama repository yang sesuai saat membuat repository GitHub.
+Repository: `UTS_422410001_Fadillah_Aryaseto_SK04`.
 
 ## Daftar isi
 
@@ -178,8 +178,8 @@ Prasyarat: PHP 8.2 atau lebih baru, Composer 2, Node.js 18 atau lebih baru, dan 
 1. Siapkan proyek.
 
 ```bash
-git clone <url-repository-anda> UTS_[NIM]_[Nama]_SK04
-cd UTS_[NIM]_[Nama]_SK04
+git clone <url-repository-anda> UTS_422410001_Fadillah_Aryaseto_SK04
+cd UTS_422410001_Fadillah_Aryaseto_SK04
 composer install
 ```
 
