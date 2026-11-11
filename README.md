@@ -350,6 +350,7 @@ Arah visual: ruang arsip analog, dengan dial ENERGY 2 / RHYTHM 2 / MOTION 1.
 - Border tebal dan hard shadow meniru tumpukan kartu katalog dan kotak kaset, sekaligus menandai elevasi tanpa efek glow.
 - Tekstur noise dan garis ledger halus memberi kesan kertas, bukan dekorasi generik.
 - Ikon Phosphor dipilih sesuai objek arsip: kaset, pita, kunci pas, corong, dan label.
+- Ikon tab memakai motif kaset yang sama: `public/favicon.svg` untuk peramban modern, `public/favicon.ico` sebagai cadangan, dan `public/apple-touch-icon.png` untuk layar utama iOS.
 - Gerak dibatasi pada hover, transisi sidebar, dan dialog agar terasa seperti membuka kotak arsip, bukan animasi dekoratif.
 - Setiap angka di dashboard dihitung dari database. Data seeder bersifat fiktif dan dijelaskan pada bagian berikut.
 
