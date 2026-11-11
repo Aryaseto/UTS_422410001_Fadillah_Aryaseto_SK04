@@ -25,6 +25,7 @@ Repository: `UTS_422410001_Fadillah_Aryaseto_SK04`.
 - [Relasi Eloquent](#relasi-eloquent)
 - [Diagram](#diagram)
 - [Instalasi](#instalasi)
+- [Impor database ke phpMyAdmin](#impor-database-ke-phpmyadmin)
 - [Menjalankan aplikasi](#menjalankan-aplikasi)
 - [Alur pencarian dan filter](#alur-pencarian-dan-filter)
 - [Transaksi dan validasi](#transaksi-dan-validasi)
@@ -226,6 +227,18 @@ php artisan migrate --seed
 npm install
 npm run build
 ```
+
+## Impor database ke phpMyAdmin
+
+Berkas `database/uts_sk04_pita_lestari.sql` berisi struktur dan data yang sama dengan hasil `php artisan migrate --seed`, jadi database bisa dipulihkan tanpa menjalankan Artisan.
+
+1. Buka phpMyAdmin.
+2. Pilih tab **Import**.
+3. Klik **Choose File**, lalu pilih `database/uts_sk04_pita_lestari.sql`.
+4. Biarkan format **SQL**, lalu klik **Import** atau **Go**.
+5. Berkas akan membuat database `uts_sk04_pita_lestari` bila belum ada, memilih database tersebut, lalu membuat ulang tabel dan mengisi data.
+
+Catatan: bila server melarang `CREATE DATABASE`, buat database `uts_sk04_pita_lestari` secara manual, pilih database itu, lalu impor. Berkas sudah memuat `DROP TABLE IF EXISTS`, sehingga impor ulang akan mengganti tabel lama.
 
 ## Menjalankan aplikasi
 
