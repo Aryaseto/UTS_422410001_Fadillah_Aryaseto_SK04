@@ -1,0 +1,76 @@
+# ERD: Pita Lestari
+
+ERD berikut mengikuti migration MySQL pada folder `database/migrations`. Tabel `koleksi_tindakan` adalah pivot many-to-many dengan atribut tambahan status, tanggal, dan catatan.
+
+```mermaid
+erDiagram
+    kategori_format {
+        bigint id PK
+        varchar nama_format UK "unik, maksimal 100 karakter"
+        text deskripsi "nullable"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    koleksi_pita {
+        bigint id PK
+        varchar kode_koleksi UK "unik, maksimal 30 karakter"
+        varchar nama_koleksi "maksimal 150 karakter"
+        bigint kategori_format_id FK "references kategori_format.id, restrict delete"
+        year tahun "nullable"
+        text deskripsi "nullable"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    detail_kondisi {
+        bigint id PK
+        bigint koleksi_pita_id FK, UK "references koleksi_pita.id, cascade delete"
+        text kondisi_awal
+        varchar tingkat_kerusakan "enum: ringan, sedang, berat"
+        text catatan "nullable"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    tindakan_restorasi {
+        bigint id PK
+        varchar nama_tindakan UK "unik, maksimal 120 karakter"
+        text deskripsi "nullable"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    koleksi_tindakan {
+        bigint id PK
+        bigint koleksi_pita_id FK "references koleksi_pita.id, cascade delete"
+        bigint tindakan_restorasi_id FK "references tindakan_restorasi.id, cascade delete"
+        varchar status "enum: rencana, proses, selesai, default rencana"
+        date tanggal_mulai "nullable"
+        date tanggal_selesai "nullable"
+        text catatan "nullable"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    kategori_format ||--o{ koleksi_pita : "satu kategori memiliki banyak koleksi"
+    koleksi_pita ||--|| detail_kondisi : "satu koleksi memiliki satu detail kondisi"
+    koleksi_pita ||--o{ koleksi_tindakan : "satu koleksi memiliki banyak pivot tindakan"
+    tindakan_restorasi ||--o{ koleksi_tindakan : "satu tindakan dipakai banyak koleksi"
+```
+
+## Aturan relasi
+
+| Relasi | Kardinalitas | Foreign key | On delete |
+|---|---|---|---|
+| `kategori_format` ke `koleksi_pita` | satu ke banyak | `koleksi_pita.kategori_format_id` | `RESTRICT` |
+| `koleksi_pita` ke `detail_kondisi` | satu ke satu | `detail_kondisi.koleksi_pita_id` (unique) | `CASCADE` |
+| `koleksi_pita` ke `koleksi_tindakan` | satu ke banyak | `koleksi_tindakan.koleksi_pita_id` | `CASCADE` |
+| `tindakan_restorasi` ke `koleksi_tindakan` | satu ke banyak | `koleksi_tindakan.tindakan_restorasi_id` | `CASCADE` |
+
+Constraint unik gabungan `(koleksi_pita_id, tindakan_restorasi_id)` mencegah satu tindakan dipasang dua kali pada koleksi yang sama.
+
+## Berkas sumber
+
+- Mermaid: `docs/erd.mmd`
+- Hasil PNG: `docs/erd.png`

@@ -1,0 +1,159 @@
+@import '@fontsource-variable/bitter/wght.css';
+@import '@fontsource-variable/ibm-plex-sans/wght.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+@import 'tailwindcss';
+
+@theme {
+    --font-sans: 'IBM Plex Sans Variable', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Bitter Variable', ui-serif, Georgia, serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+    --color-paper: #faf3e2;
+    --color-paper-light: #fdf9ef;
+    --color-paper-dark: #f0e4cb;
+    --color-ink: #2d2821;
+    --color-ink-soft: #5d5142;
+    --color-ink-faint: #74644e;
+    --color-tan: #d4a373;
+    --color-tan-dark: #b9834f;
+    --color-cream: #faedcd;
+    --color-sage: #ccd5ae;
+    --color-sage-light: #e9edc9;
+    --color-rust: #9d4327;
+    --color-rust-light: #f3d7c9;
+    --color-ochre: #82561a;
+    --color-ochre-light: #f3e2bf;
+
+    --shadow-hard: 4px 4px 0 0 #2d2821;
+    --shadow-hard-sm: 2px 2px 0 0 #2d2821;
+    --shadow-hard-lg: 7px 7px 0 0 #2d2821;
+    --shadow-soft: 0 18px 40px -30px rgba(45, 40, 33, 0.8);
+
+    --radius-card: 6px;
+    --radius-field: 4px;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--color-paper);
+        color: var(--color-ink);
+        font-family: var(--font-sans);
+        background-image:
+            radial-gradient(circle at 8% 4%, rgba(212, 163, 115, 0.18), transparent 34%),
+            radial-gradient(circle at 92% 0%, rgba(204, 213, 174, 0.24), transparent 38%);
+        background-attachment: fixed;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+    }
+
+    ::selection {
+        background: var(--color-tan);
+        color: var(--color-ink);
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--color-rust);
+        outline-offset: 3px;
+    }
+
+    input[type='checkbox'],
+    input[type='radio'] {
+        accent-color: var(--color-rust);
+    }
+}
+
+@layer components {
+    .noise-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        pointer-events: none;
+        opacity: 0.045;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.65'/%3E%3C/svg%3E");
+    }
+
+    .ledger-lines {
+        background-image: repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 31px,
+            rgba(45, 40, 33, 0.075) 31px,
+            rgba(45, 40, 33, 0.075) 32px
+        );
+    }
+
+    .tape-stripes {
+        background-image: repeating-linear-gradient(
+            90deg,
+            rgba(250, 237, 205, 0.9) 0,
+            rgba(250, 237, 205, 0.9) 2px,
+            transparent 2px,
+            transparent 8px
+        );
+    }
+
+    .label-notch {
+        clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+    }
+
+    .stamp {
+        transform: rotate(-3deg);
+        border: 2px solid currentColor;
+        box-shadow: inset 0 0 0 1px currentColor;
+    }
+
+    .kbd {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        line-height: 1;
+        border: 1px solid rgba(45, 40, 33, 0.28);
+        border-bottom-width: 2px;
+        border-radius: 3px;
+        padding: 0.2rem 0.32rem;
+        background: var(--color-paper-light);
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
